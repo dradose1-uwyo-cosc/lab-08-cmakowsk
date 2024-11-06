@@ -13,11 +13,25 @@
 # If they can't be converted return false
 # Other wise return the converted int or float 
 # Floats should only have one decimal point in them 
+string = input("insert number here: ")
+def check_if_int_or_float(string):
+    try:
+        if "." not in string:
+            return int(string)
+        elif string.count(".") == 1:
+            return float(string)
+        else:
+            return False
+    except ValueError:
+        return False
+number = check_if_int_or_float(string)
+if number is not False:
+    print("Converted value", number)
+else:
+    print("Invalid Input")
 
 
 print("*" * 75)
-
-
 # Point-slope y = mx + b
 # This is used in mathematics to determine what the value y would be for any given x
 # Where b is the y-intercept, where the line crosses the y-axis (x = 0)
