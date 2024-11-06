@@ -42,6 +42,35 @@ print("*" * 75)
     # b, the intercept
     # a lower x bound
     # an upper x bound
+list = []
+def slope_intercept():
+    while True:
+        m = input("slope Here: ")
+        if check_if_int_or_float(m):
+            m = check_if_int_or_float(m)
+        elif 'exit' in m.lower():
+            break
+        else:
+            print ("Please enter correct value")
+            continue
+        B
+        if check_if_int_or_float(B):
+            B = check_if_int_or_float(B)
+        elif 'exit' in B.lower
+
+            Low = check_if_int_or_float(input())
+        Up = check_if_int_or_float(input())
+        if Low > Up:
+            print ("Please enter correct value")
+            continue
+        For i in range(low, up +1):
+            Y = m*i+ b
+            list.append(Y)
+slope_intercept()
+print(list)
+
+
+
 # Return a list for all values of y for the given x range, inclusive (whole number X's only)
 # Check to make sure that the lower bound is less than or equal to the upper bound
 # m, b can be floats or integers
