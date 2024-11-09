@@ -42,49 +42,39 @@ print("*" * 75)
     # b, the intercept
     # a lower x bound
     # an upper x bound
-list = []
-def slope_intercept(m,b,Up,Low):
+Output = []
+def slope_intercept():
     while True:
-        m = input("slope Here: ")
-        if check_if_int_or_float(m):
-            m = check_if_int_or_float(m)
-        elif 'exit' in m.lower():
-            break
-        else:
-            print ("Please enter correct value")
+        Output.clear()
+        m = input("Slope here: ")
+        m = check_if_int_or_float(m)
+        if m is False:
+            print("Please enter a valid slope value.")
             continue
-        B = input("intercept Here: ")
-        if check_if_int_or_float(B):
-            B = check_if_int_or_float(B)
-        elif 'exit' in B.lower():
-            break
-        else:
-            print("please enter correct value")
+
+        b = input("Intercept here: ")
+        b = check_if_int_or_float(b)
+        if b is False:
+            print("Please enter a valid intercept value.")
             continue
-        Low = input("Lower Bound Here: ")
-        if check_if_int_or_float(Low):
-            Low = check_if_int_or_float(Low)
-        elif 'exit' in Low.lower():
-            break
-        else:
-            print("please enter correct value")
+
+        Low = input("Lower bound here: ")
+        Low = check_if_int_or_float(Low)
+        if Low is False:
+            print("Please enter a valid lower bound value.")
             continue
+
         Up = input("Upper bound here: ")
-        if check_if_int_or_float(Up):
-            Up = check_if_int_or_float(Up)
-        elif 'exit' in Up.lower():
-            break
-        else:
-            print("Please enter correct value")
+        Up = check_if_int_or_float(Up)
+        if Up is False or Low > Up:
+            print("Please enter a valid upper bound: ")
             continue
-        if Low > Up:
-            print ("Please enter correct bounds")
-            continue
-        For number in range(low, up +1):
-            Y = m * check_if_int_or_float(number) + b
-            list.append(Y)
+        for number in range(int(Low), int(Up) +1):
+            Y = m * number + b
+            Output.append(Y)
+        break
 slope_intercept()
-print(list)
+print(Output)
 
 
 
@@ -103,8 +93,52 @@ print("*" * 75)
 
 # Write a function to solve the quadratic formula
 # https://en.wikipedia.org/wiki/Quadratic_formula
+# (-b +or- square root(b^2-4ac))/2a
 # Accept inputs for a, b, c
 # Remember that this returns two values
 # Create a loop like above to prompt the user for input for the three values
 # Create a second function that just does the square root operation 
     # If the number you are trying to take the square root of is negative, return null
+Answer = []
+while True:
+    Answer.clear()
+    a = input("input x^2 term here: ")
+    if a.lower() == "exit":
+        break
+    a = check_if_int_or_float(a)
+    if a is False:
+        print("Please enter a valid lower bound value.")
+        continue
+    if a == 0:
+        print("Can't divide by 0")
+        continue
+    
+    
+    b = input("input x term here: ")
+    if b.lower() == "exit":
+        break
+    b = check_if_int_or_float(b)
+    if b is False:
+        print("Please enter a valid lower bound value.")
+        continue
+    c = input("input constant term here: ")
+    if c.lower() == "exit":
+        break
+    c = check_if_int_or_float(c)
+    if c is False:
+        print("Please enter a valid lower bound value.")
+        continue
+    z = b **2 - 4*a*c
+    def root(z):
+        if z < 0:
+            return None
+        else:
+            return z ** 0.5
+    if root(z) is None:
+        print("values for root make imaginary number (i)")
+        continue
+    neg = (-b - root(z))/2*a
+    pos = (-b + root(z))/2*a
+    Answer.append(int(neg))
+    Answer.append(int(pos))
+    print(Answer)
